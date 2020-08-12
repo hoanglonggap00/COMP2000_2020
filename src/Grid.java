@@ -4,16 +4,17 @@ public class Grid {
     Cell[][] cells = new Cell[20][20];
 
     public Grid(){
-
+        for (int i = 0; i < cells.length; i ++) {
+            for (int j = 0; j < cells.length; j ++) {
+                cells[i][j] = new Cell(10+35*i,10+35*j);
+            }
+        }
     }
 
-    public void paint(Graphics g) {
-        for (int i = 10; i < 710; i+= 35) {
-            for (int j = 10; j < 710; j+= 35) {
-                g.setColor(Color.WHITE);
-                g.fillRect(i, j, 35, 35);
-                g.setColor(Color.BLACK);
-                g.drawRect(i, j, 35, 35);
+    public void paint(Graphics g, Point mousePos) {
+        for (int i = 0; i < cells.length; i ++) {
+            for (int j = 0; j < cells.length; j ++) {
+                cells[i][j].paint(g, mousePos);
             }
         }
     }
